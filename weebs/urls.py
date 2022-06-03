@@ -1,0 +1,25 @@
+from django.urls import path 
+from . import views
+
+urlpatterns = [
+
+    path('',views.index,name='index'),
+
+
+    path('top-article/<int:pk>',views.top_article,name='top-article'),
+    path('manhua-article/<int:pk>',views.manhua_article,name='manhua-article'),
+    path('manhwa-article/<int:pk>',views.manhwa_article,name='manhwa-article'),
+
+
+    path('category',views.category,name='category'),
+    
+    path('category/manhwa',views.manhwa,name='manhwa'),
+    path('category/manhua',views.manhua,name='manhua'),
+
+
+    path('about/',views.about,name='about'),
+    path('contact',views.contact,name='contact'),
+
+
+
+]
