@@ -47,13 +47,28 @@ def category(request):
 
 
 def manhwa(request):
-    return render(request,'weebs/manhwa.html')
+    post = AllPost.objects.filter(Type= 'manhwa' )
+    return render(request,'weebs/manhwa.html',{
+        "post":post,
+    })
 
 
 def manhua(request):
-    return render(request,'weebs/manhua.html')
+    post = AllPost.objects.filter(Type= 'manhua' )
+    return render(request,'weebs/manhua.html',{
+        "post":post,
+    })
 
-
+def search_content(request):
+    if request.method == "POST":
+        searched = request.POST["searched"]
+        posts = AllPost.objects.filter( title__contains = searched)
+        
+    return render (request,'weebs/searched-content.html',{
+        "posts":posts,
+       
+        "searched":searched,
+    })
 
 
 def about(request):

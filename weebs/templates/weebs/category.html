@@ -166,20 +166,36 @@
  
                 <div class="grid-sizer"></div>
             {% for category in category %}
+            {% if category.category_object.type == 'manhwa'  %}
                 <article class="brick entry format-standard animate-this">
     
                     <div class="entry__thumb">
-                        <a href=" {% static 'single-standard.html' %} " class=" thumb-link  {{ category.category_object.type }}" >
+                        
+                        <a href=" {% url 'manhwa' %} " class=" thumb-link  manhwa" >
                             <img src=" {{category.category_object.categoryimage.url }} " 
                                  srcse {% static 't="imag' %} es/thumbs/masonry/woodcraft-600.jpg 1x, images/thumbs/masonry/woodcraft-1200.jpg 2x" alt="">
                         </a>
-                        {% if category.category_object.type == 'manhwa'  %}
+                   
                         <div style="text-align: center ;">MANHWA</div>
-                       
-
-                        {% elif category.category_object.type == 'manhua'  %}
+     
+                    </div> <!-- end entry__thumb -->
+    
+               
+    
+                </article> <!-- end entry -->
+                {% elif category.category_object.type == 'manhua'  %}
+                <article class="brick entry format-standard animate-this">
+    
+                    <div class="entry__thumb">
+                        
+                        <a href=" {% url 'manhua' %} " class=" thumb-link  manhua" >
+                            <img src=" {{category.category_object.categoryimage.url }} " 
+                                 srcse {% static 't="imag' %} es/thumbs/masonry/woodcraft-600.jpg 1x, images/thumbs/masonry/woodcraft-1200.jpg 2x" alt="">
+                        </a>
+                   
                         <div style="text-align: center ;">MANHUA</div>
-                        {% endif %}
+            
+                    
                         
                      
                     </div> <!-- end entry__thumb -->
@@ -187,6 +203,7 @@
                
     
                 </article> <!-- end entry -->
+                {% endif %}
             {% endfor %}
  
             </div> <!-- end brick-wrapper --> 

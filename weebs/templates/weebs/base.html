@@ -92,10 +92,11 @@
             
             <div class="s-header__search">
                     
-                <form role="search" method="get" class="s-header__search-form" action="#">
+                <form role="search" method="post" class="s-header__search-form" action=" {% url 'search_content' %} ">
+                    {% csrf_token %}
                     <label>
                         <span class="hide-content">Search for:</span>
-                        <input type="search" class="s-header__search-field" placeholder="Type Your Keywords" value="" name="s" title="Search for:" autocomplete="off">
+                        <input type="search" class="s-header__search-field" placeholder="Type Your Keywords" value="" name="searched" title="Search for:" autocomplete="off">
                     </label>
                     <input type="submit" class="s-header__search-submit" value="Search">
                 </form>
