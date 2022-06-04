@@ -1,24 +1,32 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.contrib.contenttypes.models import ContentType
+from django.contrib.contenttypes.fields import GenericForeignKey
+from django.forms import SlugField
 
 
 class manhwa(models.Model):
     title = models.CharField(max_length=225)
     image = models.ImageField(null=True,blank=True,upload_to="images/")
+    categoryimage = models.ImageField(null=True,blank=True,upload_to="images/category")
     author = models.CharField(max_length=225,null=True, blank=True)
     about = models.TextField(null=True, blank=True)
     story = models.TextField()
     chapters = models.IntegerField(null=True , blank=True)
+    type = models.CharField(max_length=23,null=True,blank=True)
 
     def __str__(self):
         return f"{self.title} | {self.chapters}"
 
 class manhua(models.Model):
     title = models.CharField(max_length=225)
+    image = models.ImageField(null=True,blank=True,upload_to="images/")
+    categoryimage = models.ImageField(null=True,blank=True,upload_to="images/category")
     author = models.CharField(max_length=225,null=True, blank=True)
     about = models.TextField(null=True, blank=True)
     story = models.TextField()
     chapters = models.IntegerField(null=True , blank=True)
+    type = models.CharField(max_length=23,null=True,blank=True)
 
     def __str__(self):
         return f"{self.title} | {self.chapters}"
@@ -51,3 +59,12 @@ class Comment(models.Model):
     
     def datepublished(self):
         return self.commented_on.strftime('%B %d %Y')
+
+class Categories(models.Model):
+    tag = SlugField()
+    category = models.ForeignKey(ContentType,on_delete=models.CASCADE)
+    object_id = models.PositiveIntegerField()
+    category_object = GenericForeignKey('category','object_id')
+
+    def __str__(self):
+        return f"{self.category_object}"

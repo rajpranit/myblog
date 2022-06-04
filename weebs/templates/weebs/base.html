@@ -32,6 +32,12 @@
         {% block script %}
         {% endblock  %}
 
+        {% block style%}
+        {% endblock %}
+
+
+      
+
 </head>
 
 <body id="top">
@@ -62,8 +68,8 @@
 
                 <ul class="s-header__nav">
                     <li id="home" class="home"><a href=" {% url 'index' %} " title="">Home</a></li>
-                    <li id="category"  class="has-children category">
-                        <a  href=" {% url 'category' %} " title="">Categories</a>
+                    <li id="category" class="category" >
+                        <a href=" {% url 'category' %} ">Categories</a>
                         <ul class="sub-menu">
                            
                             <li ><a href=" {% url 'manhwa' %} ">Manhwa</a></li>
@@ -75,7 +81,7 @@
                    
                  
                     <li id="about" class="about"><a href=" {% url 'about' %} " title="">About</a></li>
-                    <li><a href=" {% url 'contact' %} " title="">Contact</a></li>
+                    <li id="contact" class="contact"><a  href=" {% url 'contact' %} " title="">Contact</a></li>
                 </ul> <!-- end header__nav -->
 
                 <a href=" {% static '#0' %} " title="Close Menu" class="s-header__overlay-close close-mobile-menu">Close</a>

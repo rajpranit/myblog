@@ -1,7 +1,8 @@
 from django.shortcuts import render ,redirect
-from .models import AllPost ,Comment
+from .models import AllPost ,Comment ,Categories
 
 def index(request):
+ 
    allpost = AllPost.objects.all()
    sliderpost = AllPost.objects.all().order_by('id')[:2]
    return render(request,'weebs/index.html',{
@@ -38,7 +39,11 @@ def comment(request,pk):
         return redirect('article-detail' ,pk)
 
 def category(request):
-    return render(request,'weebs/category.html')
+    category = Categories.objects.all()
+
+    return render(request,'weebs/category.html',{
+        'category':category,
+    })
 
 
 def manhwa(request):
