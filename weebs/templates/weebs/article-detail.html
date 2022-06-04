@@ -5,7 +5,7 @@
 <section class="s-content s-content--single">
     <div class="row">
         <div class="column large-12">
-{% for post in manhwapost %}
+{% for post in posts %}
     <article class="s-post entry format-standard">
             
         <div class="s-content__media">
@@ -25,7 +25,13 @@
 
             <ul class="s-content__post-meta">
                 <li class="date">{{ post.created_on }}</li>
-                <li class="cat"><a href="  ">Frontend</a><a href="">Design</a></li>
+                {% if post.Type == 'manhwa'%}
+                    <li class="cat"><a href=" {% url 'manhwa'  %} "> {{ post.Type}} </a>
+                {%endif %}
+
+                {% if post.Type == 'manhua'%}
+                    <li class="cat"><a href=" {% url 'manhua'  %} "> {{ post.Type}} </a>
+                {%endif %}
             </ul>
 
             <p class="lead" style="color: #a03e4a; font-weight: 200;">
@@ -35,22 +41,40 @@
             
 
             
+            {% if post.Type == 'manhwa' %}
+                {% for post in post.manhwa.all %}
+                <h2>{{ post.title }}</h2>
+                {% if post.image %}
+                <img src="{{ post.image.url }}" class="img-fluid" alt="Responsive image">
+                {% endif %}
+                <blockquote> 
+                    <p>
+                        <strong>{{ post.about}}</strong>
+                    </p>
+                    <cite>Author- {{ post.author}}</cite>
+                    <p></p>
+                </blockquote>
 
-            {% for post in post.manhwa.all %}
-            <h2>{{ post.title }}</h2>
-            {% if post.image %}
-            <img src="{{ manhwa.image.url }}" style="margin-left: 3%; height: 301px;" alt="img">
+                <p>{{ post.story }}</p>
+                {% endfor %}
             {% endif %}
-            <blockquote> 
-                <p>
-                    <strong>{{ post.about}}</strong>
-                </p>
-                <cite>John 3:16-17 ESV</cite>
-            </blockquote>
 
-            <p>{{ post.story }}</p>
-            {% endfor %}
-            
+            {% if post.Type == 'manhua' %}
+                {% for post in post.manhua.all %}
+                <h2>{{ post.title }}</h2>
+                {% if post.image %}
+                <img src="{{ post.image.url }}" class="img-fluid" alt="Responsive image">
+                {% endif %}
+                <blockquote> 
+                    <p>
+                        <strong>{{ post.about}}</strong>
+                    </p>
+                    <cite>Author- {{ post.author}}</cite>
+                </blockquote>
+
+                <p>{{ post.story }}</p>
+                {% endfor %}
+            {% endif %}
          
 
             <div class="s-content__author">
@@ -89,7 +113,7 @@
                         <li class="depth-1 comment">
 
                             <div class="comment__avatar">
-                                <img class="avatar" src=" {% static 'images/avatars/user-01.jpg' %} " alt="" width="50" height="50">
+                                <img class="avatar" src=" {% static 'images/avatars/profile.png' %} " alt="" width="50" height="50">
                             </div>
 
                             <div class="comment__content">

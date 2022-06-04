@@ -22,10 +22,38 @@ def manhua_article(request,pk ):
     })
 
 def manhwa_article(request,pk ):
+    
     manhwapost = AllPost.objects.filter(pk = pk)
+    count = 0
+    for post in manhwapost:
+        for comment in post.comments.all():
+            count += 1  
+
+
+        
     return render(request,'weebs/manhwa-article.html',{
         "manhwapost":manhwapost,
+        "count":count
     })
+
+def article_detail(request,pk ):
+    
+    posts = AllPost.objects.filter(pk = pk)
+    count = 0
+    for post in posts:
+        for comment in post.comments.all():
+            count += 1  
+
+
+        
+    return render(request,'weebs/article-detail.html',{
+        "posts":posts,
+        "count":count
+    })
+
+
+
+
 
 
 def category(request):

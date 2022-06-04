@@ -6,9 +6,11 @@ urlpatterns = [
     path('',views.index,name='index'),
 
 
-    path('top-article/<int:pk>',views.top_article,name='top-article'),
-    path('manhua-article/<int:pk>',views.manhua_article,name='manhua-article'),
-    path('manhwa-article/<int:pk>',views.manhwa_article,name='manhwa-article'),
+    # path('top-article/<int:pk>',views.top_article,name='top-article'),
+    # path('manhua-article/<int:pk>',views.manhua_article,name='manhua-article'),
+    # path('manhwa-article/<int:pk>',views.manhwa_article,name='manhwa-article'),
+
+    path('article-detail/<int:pk>',views.article_detail,name='article-detail'),
 
 
     path('category',views.category,name='category'),
