@@ -154,7 +154,8 @@
                 <span>Your email address will not be published.</span>
                 </h3>
 
-                <form name="contactForm" id="contactForm" method="post" action="" autocomplete="off">
+                <form name="contactForm" id="contactForm" method="post" action="{% url 'comment' post.id %}" autocomplete="off">
+                    {% csrf_token %}
                     <fieldset>
 
                         <div class="form-field">

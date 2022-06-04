@@ -11,6 +11,7 @@ urlpatterns = [
     # path('manhwa-article/<int:pk>',views.manhwa_article,name='manhwa-article'),
 
     path('article-detail/<int:pk>',views.article_detail,name='article-detail'),
+    path('comment/<int:pk>',views.comment,name='comment'),
 
 
     path('category',views.category,name='category'),

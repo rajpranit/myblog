@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from .models import AllPost
+from django.shortcuts import render ,redirect
+from .models import AllPost ,Comment
 
 def index(request):
    allpost = AllPost.objects.all()
@@ -9,32 +9,6 @@ def index(request):
       'sliderpost':sliderpost,
     })
 
-def top_article(request,pk ):
-    toppost = AllPost.objects.filter(pk=pk)
-    return render(request,'weebs/top-article.html',{
-        "toppost":toppost,
-    })
-
-def manhua_article(request,pk ):
-    manhuapost = AllPost.objects.filter(pk = pk)
-    return render(request,'weebs/manhua-article.html',{
-        "manhuapost":manhuapost,
-    })
-
-def manhwa_article(request,pk ):
-    
-    manhwapost = AllPost.objects.filter(pk = pk)
-    count = 0
-    for post in manhwapost:
-        for comment in post.comments.all():
-            count += 1  
-
-
-        
-    return render(request,'weebs/manhwa-article.html',{
-        "manhwapost":manhwapost,
-        "count":count
-    })
 
 def article_detail(request,pk ):
     
@@ -51,10 +25,17 @@ def article_detail(request,pk ):
         "count":count
     })
 
+def comment(request,pk):
+    if request.method == 'POST':
+        posts = AllPost.objects.filter(pk = pk)
+        for post in posts:
+            post =post
+            name = request.POST['cName']
+            comment = request.POST['cMessage']
+        comment = Comment(post = post,name=name,comment=comment)
+        comment.save()
 
-
-
-
+        return redirect('article-detail' ,pk)
 
 def category(request):
     return render(request,'weebs/category.html')
