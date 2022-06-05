@@ -41,7 +41,7 @@ class AllPost(models.Model):
     poster_image = models.ImageField(blank=True,null=True,upload_to='images/Poster')
     poster_image_md = models.ImageField(blank=True,null=True,upload_to='images/')
     poster_image_sm = models.ImageField(blank=True,null=True,upload_to='images/')
-    created_on = models.DateTimeField(null=True)
+    posted_on = models.DateTimeField(blank=True,null=True)
     Type = models.CharField(max_length=45,null=True,blank=True)
     post_type = models.CharField(max_length=34,null=True,blank=True)
  
