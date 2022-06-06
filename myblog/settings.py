@@ -2,6 +2,7 @@ from pathlib import Path
 import django_heroku
 import dj_database_url
 from decouple import config
+import os
 
 
 
@@ -49,7 +50,7 @@ ROOT_URLCONF = 'myblog.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
