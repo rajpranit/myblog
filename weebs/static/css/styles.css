@@ -3721,7 +3721,7 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 }
 
 .s-header__logo img {
-    width: 21.8rem;
+    width: 5.8rem;
     height: 5.8rem;
     margin: 0;
     vertical-align: bottom;
@@ -4102,7 +4102,7 @@ body.search-is-visible {
         padding-left: 4rem;
     }
     .s-header__logo img {
-        width: 18.6rem;
+        width: 5.6rem;
         height: 5.6rem;
     }
     .s-header__nav-wrap {
@@ -4230,7 +4230,7 @@ body.search-is-visible {
         padding-left: .2rem;
     }
     .s-header__logo img {
-        width: 15.8rem;
+        width: 5.8rem;
         height: 4.8rem;
     }
     .s-header__nav {
