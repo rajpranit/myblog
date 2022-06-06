@@ -6,7 +6,7 @@ def index(request):
    allpost = AllPost.objects.all()
    sliderpost = AllPost.objects.all().order_by('id')[:2]
    return render(request,'weebs/index.html',{
-      'allpost':allpost,
+      'allposts':allpost,
       'sliderpost':sliderpost,
     })
 
