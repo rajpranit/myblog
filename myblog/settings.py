@@ -3,7 +3,7 @@ import django_heroku
 import dj_database_url
 from decouple import config
 import os
-
+from whitenoise import WhiteNoise
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
